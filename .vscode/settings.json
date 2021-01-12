@@ -1,9 +1,5 @@
 {
     "tslint.alwaysShowRuleFailuresAsWarnings": true,
-    "editor.formatOnSave": true,
-    "editor.foldingStrategy": "auto",
-    "editor.fontFamily": "Fira Code",
-    "editor.fontLigatures": true,
     "window.zoomLevel": 1,
     "files.autoSave": "off",
     "typescript.preferences.quoteStyle": "double",
