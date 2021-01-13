@@ -22,13 +22,17 @@ jobs:
     defaults:
       run:
         working-directory: ./api
-    # Steps represent a sequence of tasks that will be executed as part of the job
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x]
     steps:
-      - name: Run all tests
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '12'
-      - run: npm install
-      - run: npm test
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: npm install
+    - run: npm run build --if-present
+    - run: npm test
+      env:
+        CI: true
