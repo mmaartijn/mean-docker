@@ -55,7 +55,7 @@ let apiRoutes = require("./api-routes");
 // use JWT auth to secure the api, the token can be passed in the authorization header or querystring
 app.use(
   expressJwt({
-    secret: environment.secret,
+    secret: environment.secret || 'myJWTSecret',
     algorithms: ["HS256"],
     getToken: function (req) {
       if (
