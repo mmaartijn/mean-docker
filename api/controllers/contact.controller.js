@@ -94,7 +94,7 @@ exports.update = (req, res) => {
           data: contact,
         });
       });
-    }
+    },
   );
 };
 
