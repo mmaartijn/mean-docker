@@ -12,7 +12,7 @@
   "rules": {
     "linebreak-style":"off",
     "prettier/prettier": "warn",
-    "comma-dangle": ["error", "never"],
+    "comma-dangle": ["error", "never"]
   },
   "plugins": ["prettier"]
 }
