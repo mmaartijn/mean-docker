@@ -1,22 +1,20 @@
-const environment = require("../config/environment");
-
-const request = require('supertest')
-const mongoose = require('mongoose')
-const dbHandler = require('../tests/db-handler');
-const ContactModel = require('../models/contact.model');
-const { first } = require("lodash");
-
-let bodyParser = require("body-parser");
+const request = require('supertest');
 const app = require('express')();
+const bodyParser = require('body-parser');
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+const dbHandler = require('../tests/db-handler');
+const ContactModel = require('../models/contact.model');
+
 app.use(require('../api-routes'));
 
-// It's just so easy to connect to the MongoDB Memory Server 
+// It's just so easy to connect to the MongoDB Memory Server
 // By using mongoose.connect
-beforeAll(async () => await dbHandler.connect());
-afterEach(async () => await dbHandler.clearDatabase());
-afterAll(async () => await dbHandler.closeDatabase());
+beforeAll(async () => dbHandler.connect());
+afterEach(async () => dbHandler.clearDatabase());
+afterAll(async () => dbHandler.closeDatabase());
 
 describe('ContactController', () => {
     it('should return empty array on empty database', async done => {
