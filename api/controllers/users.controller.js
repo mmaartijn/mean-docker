@@ -95,7 +95,7 @@ exports.update = (req, res) => {
         message: 'User Info updated',
         data: user,
       });
-    },
+    }
   );
 };
 // Handle delete user

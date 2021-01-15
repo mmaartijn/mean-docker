@@ -60,8 +60,8 @@ app.use(
     algorithms: ['HS256'],
     getToken: (req) => {
       if (
-        req.headers.authorization &&
-        req.headers.authorization.split(' ')[0] === 'Bearer'
+        req.headers.authorization
+        && req.headers.authorization.split(' ')[0] === 'Bearer'
       ) {
         return req.headers.authorization.split(' ')[1];
       // eslint-disable-next-line no-else-return
@@ -70,7 +70,7 @@ app.use(
       }
       return null;
     },
-  }).unless({ path: ['/api/user/authenticate', '/api/users', '/index.html'] }),
+  }).unless({ path: ['/api/user/authenticate', '/api/users', '/index.html'] })
 );
 
 // Use Api routes in the App
