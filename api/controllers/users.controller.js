@@ -24,7 +24,7 @@ exports.index = (req, res) => {
   });
 };
 // Handle create user actions
-exports.new = function (req, res) {
+exports.new = (req, res) => {
   User.find({ username: req.body.username.trim() }, (err, users) => {
     if (err) {
       res.status(400).json({
@@ -79,22 +79,27 @@ exports.view = (req, res) => {
 };
 // Handle update user info
 exports.update = (req, res) => {
-  User.findByIdAndUpdate(req.params.user_id, req.body, { new: true }, (err, user) => {
-    if (err) {
-      res.status(400).json({
-        status: 'error',
-        error: err,
-      });
-    }
+  User.findByIdAndUpdate(
+    req.params.user_id,
+    req.body,
+    { new: true },
+    (err, user) => {
+      if (err) {
+        res.status(400).json({
+          status: 'error',
+          error: err,
+        });
+      }
 
-    res.json({
-      message: 'User Info updated',
-      data: user,
-    });
-  });
+      res.json({
+        message: 'User Info updated',
+        data: user,
+      });
+    },
+  );
 };
 // Handle delete user
-exports.delete = function (req, res) {
+exports.delete = (req, res) => {
   User.remove({ _id: req.params.user_id }, (err) => {
     if (err) {
       res.status(400).json({

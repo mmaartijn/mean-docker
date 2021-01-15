@@ -74,27 +74,32 @@ exports.view = (req, res) => {
 
 // Handle update contact info
 exports.update = (req, res) => {
-  Contact.findByIdAndUpdate(req.params.contact_id, req.body, { new: true }, (err, contact) => {
-    if (err) {
-      res.status(400).json({
-        status: 'error',
-        error: err,
-      });
-    }
+  Contact.findByIdAndUpdate(
+    req.params.contact_id,
+    req.body,
+    { new: true },
+    (err, contact) => {
+      if (err) {
+        res.status(400).json({
+          status: 'error',
+          error: err,
+        });
+      }
 
-    // save the contact and check for errors
-    contact.save((contactErr) => {
-      if (contactErr) res.json(contactErr);
-      res.json({
-        message: 'Contact Info updated',
-        data: contact,
+      // save the contact and check for errors
+      contact.save((contactErr) => {
+        if (contactErr) res.json(contactErr);
+        res.json({
+          message: 'Contact Info updated',
+          data: contact,
+        });
       });
-    });
-  });
+    },
+  );
 };
 
 // Handle delete state
-exports.delete = function (req, res) {
+exports.delete = (req, res) => {
   Contact.remove({ _id: req.params.contact_id }, (err) => {
     if (err) {
       res.status(400).json({
