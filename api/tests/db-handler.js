@@ -33,13 +33,11 @@ module.exports.closeDatabase = async () => {
 /**
  * Remove all the data for all db collections.
  */
-module.exports.clearDatabase = async () => {
+module.exports.clearDatabase = () => {
   const { collections } = mongoose.connection;
 
-  // eslint-disable-next-line no-restricted-syntax
-  // eslint-disable-next-line guard-for-in
-  for (const key in collections) {
+  Object.keys(collections).forEach(async (key) => {
     const collection = collections[key];
     await collection.deleteMany();
-  }
+  });
 };
