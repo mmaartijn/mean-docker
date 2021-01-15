@@ -95,7 +95,6 @@ exports.update = (req, res) => {
         message: 'User Info updated',
         data: user,
       });
-    // eslint-disable-next-line prettier/prettier
     }
   );
 };
