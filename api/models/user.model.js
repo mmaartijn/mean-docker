@@ -1,33 +1,32 @@
-// user.model.js
-var mongoose = require("mongoose");
-// Setup schema
-var userSchema = mongoose.Schema({
+const mongoose = require('mongoose');
+
+const userSchema = mongoose.Schema({
   firstName: {
     type: String,
-    required: true
+    required: true,
   },
   lastName: {
     type: String,
-    required: true
+    required: true,
   },
   username: {
     type: String,
-    required: true
+    required: true,
   },
   password: {
     type: String,
-    required: true
+    required: true,
   },
   token: String,
   email: String,
   mobile: String,
   create_date: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 // Export User model
-var User = (module.exports = mongoose.model("user", userSchema));
-module.exports.get = function (callback, limit) {
+const User = (module.exports = mongoose.model('user', userSchema));
+module.exports.get = (callback, limit) => {
   User.find(callback).limit(limit);
 };
