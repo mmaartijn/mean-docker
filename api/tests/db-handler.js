@@ -1,4 +1,4 @@
-const environment = require("../config/environment");
+const environment = require('../config/environment');
 const mongoose = require('mongoose');
 const { MongoMemoryServer } = require('mongodb-memory-server');
 
