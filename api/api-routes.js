@@ -12,6 +12,7 @@ router.get('/', (req, res) => {
 // Import user controller
 const userController = require('./controllers/users.controller');
 // user routes
+// eslint-disable-next-line prettier/prettier
 router
   .route('/users')
   .get(userController.index)

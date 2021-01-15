@@ -94,7 +94,8 @@ exports.update = (req, res) => {
           data: contact,
         });
       });
-    },
+    // eslint-disable-next-line comma-dangle
+    }
   );
 };
 
