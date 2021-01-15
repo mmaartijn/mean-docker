@@ -3,7 +3,7 @@
     "node": true,
     "commonjs": true,
     "es2020": true,
-    "jest/globals": true
+    "jest": true
   },
   "extends": ["plugin:prettier/recommended", "airbnb-base"],
   "parserOptions": {
