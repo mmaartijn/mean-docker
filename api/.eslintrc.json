@@ -9,8 +9,8 @@
     "ecmaVersion": 11
   },
   "rules": {
-    "prettier/prettier": "warn",
-    "linebreak-style":"off"
+    "linebreak-style":"off",
+    "prettier/prettier": "warn"
   },
   "plugins": ["prettier"]
 }
