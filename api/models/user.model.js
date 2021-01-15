@@ -26,7 +26,8 @@ const userSchema = mongoose.Schema({
   },
 });
 // Export User model
-const User = (module.exports = mongoose.model('user', userSchema));
+const User = mongoose.model('user', userSchema);
+module.exports = User;
 module.exports.get = (callback, limit) => {
   User.find(callback).limit(limit);
 };

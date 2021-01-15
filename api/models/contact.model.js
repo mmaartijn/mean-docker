@@ -23,7 +23,8 @@ const contactSchema = mongoose.Schema({
   },
 });
 // Export Contact model
-const Contact = (module.exports = mongoose.model('contact', contactSchema));
+const Contact = mongoose.model('contact', contactSchema);
+module.exports = Contact;
 module.exports.get = (callback, limit) => {
   Contact.find(callback).limit(limit);
 };

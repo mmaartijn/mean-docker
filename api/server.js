@@ -59,18 +59,16 @@ app.use(
     secret: environment.secret || 'myJWTSecret',
     algorithms: ['HS256'],
     getToken: (req) => {
-      if (
-        req.headers.authorization
-        && req.headers.authorization.split(' ')[0] === 'Bearer'
-      ) {
+      // eslint-disable-next-line prettier/prettier
+      if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
         return req.headers.authorization.split(' ')[1];
-      // eslint-disable-next-line no-else-return
+        // eslint-disable-next-line no-else-return
       } else if (req.query && req.query.token) {
         return req.query.token;
       }
       return null;
     },
-  }).unless({ path: ['/api/user/authenticate', '/api/users', '/index.html'] })
+  }).unless({ path: ['/api/user/authenticate', '/api/users', '/index.html'] }),
 );
 
 // Use Api routes in the App
